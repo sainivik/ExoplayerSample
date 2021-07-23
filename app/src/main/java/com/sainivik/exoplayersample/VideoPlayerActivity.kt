@@ -31,6 +31,8 @@ class VideoPlayerActivity : Activity() {
         setListener()
     }
 
+
+    /*setting click listeners*/
     private fun setListener() {
 
         binding.btnBack.setOnClickListener {
@@ -41,6 +43,7 @@ class VideoPlayerActivity : Activity() {
         }
     }
 
+    /*this method is used to forward video for 5 sec */
     private fun seekToFordward() {
         if (forwardDoubleClick) {
             binding.showFordward = true
@@ -52,6 +55,7 @@ class VideoPlayerActivity : Activity() {
         Handler().postDelayed({ forwardDoubleClick = false }, 1000)
 
     }
+    /*this method is used to backward video for 5 sec */
 
     private fun seekToBackward() {
 
