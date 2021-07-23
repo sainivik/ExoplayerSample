@@ -44,7 +44,7 @@ class VideoPlayerActivity : Activity() {
     private fun seekToFordward() {
         if (forwardDoubleClick) {
             binding.showFordward = true
-            Handler().postDelayed({ binding.showFordward = false }, 5000)
+            Handler().postDelayed({ binding.showFordward = false }, 1000)
             simpleExoPlayer.seekTo((simpleExoPlayer!!.currentPosition + 5000).toLong())
             return
         }
@@ -57,7 +57,7 @@ class VideoPlayerActivity : Activity() {
 
         if (backDoubleClick && simpleExoPlayer!!.currentPosition >= 5000) {
             binding.showRewind = true
-            Handler().postDelayed({ binding.showRewind = false }, 5000)
+            Handler().postDelayed({ binding.showRewind = false }, 1000)
             simpleExoPlayer.seekTo((simpleExoPlayer!!.currentPosition - 5000).toLong())
             return
         }
