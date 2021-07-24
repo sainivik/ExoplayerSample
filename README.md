@@ -65,7 +65,31 @@ the following code is used to switch video language
                     .build();
 ```
 
+the following code is used to get available audio track in video
 
+```java
+private fun getAudioTrack() {
+
+        for (i in 0 until simpleExoPlayer.currentTrackGroups.length) {
+            val format: String =
+                simpleExoPlayer.currentTrackGroups.get(i).getFormat(0).sampleMimeType
+                    ?: continue
+            val lang: String? =
+                simpleExoPlayer.currentTrackGroups.get(i).getFormat(0).language ?: continue
+
+            val label: String? =
+                simpleExoPlayer.currentTrackGroups.get(i).getFormat(0).label ?: continue
+
+            val id: String? =
+                simpleExoPlayer.currentTrackGroups.get(i).getFormat(0).id ?: continue
+
+            if (format!!.contains("audio") && id != null && lang != null) {
+               // languageList.add(LanguageModel(lang!!, label = label!!))
+            }
+        }
+
+    }
+```
 
 ## Author
 

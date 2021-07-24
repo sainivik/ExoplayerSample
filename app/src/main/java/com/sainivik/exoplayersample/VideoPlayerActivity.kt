@@ -145,7 +145,7 @@ class VideoPlayerActivity : Activity(), Player.EventListener {
 
     override fun onIsPlayingChanged(isPlaying: Boolean) {
         if (isPlaying) {
-            setAudioTrack()
+            getAudioTrack()
         }
     }
 
@@ -173,7 +173,7 @@ class VideoPlayerActivity : Activity(), Player.EventListener {
 
 
     /*method is used to get available audio track in current video*/
-    private fun setAudioTrack() {
+    private fun getAudioTrack() {
         languageList.clear();
         for (i in 0 until simpleExoPlayer.currentTrackGroups.length) {
             val format: String =
