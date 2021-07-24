@@ -85,9 +85,6 @@ class VideoPlayerActivity : Activity() {
             )
                 .createMediaSource(MediaItem.fromUri(STREAM_URL))
 
-
-        //  val mediaSource = ProgressiveMediaSource.Factory(mediaDataSourceFactory).createMediaSource(MediaItem.fromUri(STREAM_URL))
-
         val mediaSourceFactory: MediaSourceFactory =
             DefaultMediaSourceFactory(mediaDataSourceFactory)
 
@@ -110,29 +107,25 @@ class VideoPlayerActivity : Activity() {
     public override fun onStart() {
         super.onStart()
 
-        if (Util.SDK_INT > 23) initializePlayer()
+         initializePlayer()
     }
 
     public override fun onResume() {
         super.onResume()
-
-        if (Util.SDK_INT <= 23) initializePlayer()
+        initializePlayer()
     }
 
     public override fun onPause() {
         super.onPause()
-
-        if (Util.SDK_INT <= 23) releasePlayer()
+        releasePlayer()
     }
 
     public override fun onStop() {
         super.onStop()
-
-        if (Util.SDK_INT > 23) releasePlayer()
+        releasePlayer()
     }
 
     companion object {
-        //   const val STREAM_URL = "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"
         const val STREAM_URL = "https://bitmovin-a.akamaihd.net/content/sintel/hls/playlist.m3u8"
     }
 }
