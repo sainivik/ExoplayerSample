@@ -2,7 +2,8 @@
 Video streaming using exoplayer
 
 ### Screenshot
-<img src="https://github.com/sainivik/CircularTimerKotilin/blob/master/app/screenshots/circularview.gif.gif" width="300px" height="632px"/>
+<img src="https://github.com/sainivik/ExoplayerSample/blob/master/app/screenshots/home.png" width="300px" height="632px"/>
+<img src="https://github.com/sainivik/ExoplayerSample/blob/master/app/screenshots/language.png" width="300px" height="632px"/>
 
 #### Usage
 
