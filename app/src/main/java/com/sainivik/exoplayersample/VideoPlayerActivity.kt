@@ -48,7 +48,6 @@ class VideoPlayerActivity : Activity(), Player.EventListener {
     }
 
     private fun setAdapter() {
-
         adapter = SelectLanguageAdapter(languageList, object : OptionClickListener {
             override fun click(pos: Int, data: LanguageModel) {
                 trackSelector.parameters = trackSelector
@@ -70,11 +69,9 @@ class VideoPlayerActivity : Activity(), Player.EventListener {
     /*setting click listeners*/
     private fun setListener() {
         binding.btnChangAudio.setOnClickListener {
-
             dialog = Alerts.changeLanguageDialog(this, adapter)
 
         }
-
 
         binding.btnBack.setOnClickListener {
             seekToBackward();
@@ -96,14 +93,16 @@ class VideoPlayerActivity : Activity(), Player.EventListener {
         Handler().postDelayed({ forwardDoubleClick = false }, 1000)
 
     }
+
+
     /*this method is used to backward video for 5 sec */
 
     private fun seekToBackward() {
 
-        if (backDoubleClick && simpleExoPlayer!!.currentPosition >= 5000) {
+        if (backDoubleClick && simpleExoPlayer.currentPosition >= 5000) {
             binding.showRewind = true
             Handler().postDelayed({ binding.showRewind = false }, 1000)
-            simpleExoPlayer.seekTo((simpleExoPlayer!!.currentPosition - 5000).toLong())
+            simpleExoPlayer.seekTo((simpleExoPlayer.currentPosition - 5000))
             return
         }
         backDoubleClick = true
@@ -112,17 +111,8 @@ class VideoPlayerActivity : Activity(), Player.EventListener {
 
     private fun initializePlayer() {
         trackSelector = DefaultTrackSelector(this)
-
-        trackSelector.parameters = trackSelector
-            .buildUponParameters()
-            .setMaxVideoSizeSd()
-            .setPreferredAudioLanguage("dubbing")
-            .build();
-
-
         mediaDataSourceFactory =
             DefaultDataSourceFactory(this, Util.getUserAgent(this, "mediaPlayerSample"))
-
         var mediaSource =
             HlsMediaSource.Factory(
                 DefaultHttpDataSourceFactory(
@@ -148,23 +138,18 @@ class VideoPlayerActivity : Activity(), Player.EventListener {
         binding.playerView.player = simpleExoPlayer
         binding.playerView.requestFocus()
         simpleExoPlayer.addListener(this)
-        // Handler().postDelayed({ setAudioTrack(0) }, 20000)
 
 
     }
 
-    override fun onPlayWhenReadyChanged(playWhenReady: Boolean, reason: Int) {
-
-
-    }
 
     override fun onIsPlayingChanged(isPlaying: Boolean) {
-
         if (isPlaying) {
             setAudioTrack()
         }
     }
 
+    /*method is used to release player*/
     private fun releasePlayer() {
         simpleExoPlayer.release()
     }
@@ -187,7 +172,8 @@ class VideoPlayerActivity : Activity(), Player.EventListener {
     }
 
 
-    fun setAudioTrack() {
+    /*method is used to get available audio track in current video*/
+    private fun setAudioTrack() {
         languageList.clear();
         for (i in 0 until simpleExoPlayer.currentTrackGroups.length) {
             val format: String =
