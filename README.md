@@ -1,5 +1,5 @@
 # ExoplayerSample
-Video streaming using exoplayer
+Video streaming and audio track change using exoplayer
 
 ### Screenshot
 <img src="https://github.com/sainivik/ExoplayerSample/blob/master/app/screenshots/home.png" width="300px" height="632px"/>
