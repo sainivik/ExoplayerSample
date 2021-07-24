@@ -77,12 +77,12 @@ class VideoPlayerActivity : Activity(), Player.EventListener {
             seekToBackward();
         }
         binding.btnForward.setOnClickListener {
-            seekToFordward();
+            seekToForward();
         }
     }
 
     /*this method is used to forward video for 5 sec */
-    private fun seekToFordward() {
+    private fun seekToForward() {
         if (forwardDoubleClick) {
             binding.showFordward = true
             Handler().postDelayed({ binding.showFordward = false }, 1000)
